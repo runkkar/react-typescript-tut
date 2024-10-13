@@ -5,6 +5,7 @@ interface Todo {
   id: number;
   text: string;
   completed: boolean;
+  timestamp: string; // Přidáme pole pro čas přidání
 }
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
       id: Date.now(),
       text: newTodoText,
       completed: false,
+      timestamp: new Date().toLocaleString(),
     };
 
     setTodos([...todos, newTodo]);
@@ -54,7 +56,7 @@ const App = () => {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <span>{todo.text}</span>
+            <span>{todo.text}</span> - <span>{todo.timestamp}</span> {}
             <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           </li>
         ))}
